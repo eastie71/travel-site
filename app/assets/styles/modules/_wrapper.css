@@ -1,0 +1,19 @@
+.wrapper {
+	/* overflow hidden is required to handle the negative margin when trying to handle padding on row content - see column layout block lecture */
+	overflow: hidden;
+	padding-left: 18px;
+	padding-right: 18px;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+
+	&--medium {
+		max-width: 976px;
+	}
+
+	/* This is to deal with nested classes ie. wrapper within a wrapper */
+	.wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
