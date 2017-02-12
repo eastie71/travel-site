@@ -1,0 +1,15 @@
+.generic-content-container {
+	p {
+		line-height: 1.65;	
+		margin: 1.8rem 0;
+
+		@mixin atSmall {
+			font-size: 1.125rem;
+		}	
+	}
+
+	/* could nest this in "p" - but instructor does not like more than 1 level deep of nesting */
+	p a {
+		font-weight: 700;
+	}
+}

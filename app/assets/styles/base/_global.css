@@ -8,6 +8,10 @@ img {
 	max-height: auto;
 }
 
+a {
+	color: $mainOrange;
+}
+
 /* this causes the padding to NOT be included in the width calculations of a div */
 * {
 	box-sizing: border-box;

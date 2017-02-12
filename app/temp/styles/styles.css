@@ -460,6 +460,8 @@ template {
   display: none;
 }
 
+/* clearfix - better way to clear the floats after using them for a row */
+
 body {
 	font-family: Roboto, sans-serif;
 	color: #333;
@@ -470,13 +472,15 @@ img {
 	max-height: auto;
 }
 
+a {
+	color: #d59541;
+}
+
 /* this causes the padding to NOT be included in the width calculations of a div */
 
 * {
 	box-sizing: border-box;
 }
-
-/* clearfix - better way to clear the floats after using them for a row */
 
 .btn {
 	background-color: #2f5572;
@@ -661,12 +665,22 @@ img {
   font-weight: 400;
 }
 
+/* small margin at the bottom modifier */
+
 .headline--b-margin-small {
   margin-bottom: .5em;
 }
 
+/* large margin at the bottom modifier */
+
 .headline--b-margin-large {
   margin-bottom: 1.6em;
+}
+
+/* no margin at top modifier */
+
+.headline--no-t-margin {
+  margin-top: 0;
 }
 
 .row::after {
@@ -685,7 +699,15 @@ img {
   padding-right: 65px;
 }
 
+.row__b-margin-until-medium {
+  margin-bottom: 1rem;
+}
+
 @media (min-width: 800px) {
+
+  .row__b-margin-until-medium {
+    margin-bottom: 0;
+  }
 
   .row__medium-4 {
     float: left;
@@ -704,6 +726,24 @@ img {
   .row__medium-8--smaller {
     width: 63%;
   }
+}
+
+.generic-content-container p {
+  line-height: 1.65;
+  margin: 1.8rem 0;
+}
+
+@media (min-width: 530px) {
+
+  .generic-content-container p {
+    font-size: 1.125rem;
+  }
+}
+
+/* could nest this in "p" - but instructor does not like more than 1 level deep of nesting */
+
+.generic-content-container p a {
+  font-weight: 700;
 }
 
 
