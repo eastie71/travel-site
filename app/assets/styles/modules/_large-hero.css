@@ -8,6 +8,7 @@
 
 	/* here the ampersand(&) is a substitute for the main class name (.large-hero) */
 	&__text-content {
+		padding-top: 88px;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -16,6 +17,10 @@
 		/* this will center the text */
 		width: 100%;
 		text-align: center;
+
+		@mixin atMedium {
+			padding-top: 60px;
+		}
 	}
 
 	&__title {
