@@ -30,8 +30,11 @@
 		background-color: #e0e6ef;
 
 		@mixin atLarge {
-			background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
-			background-size: cover;
+			/* Once the lazyloaded class has been applied to the testimonials page section - only then apply the background image */
+			&.lazyloaded {
+				background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+				background-size: cover;
+			}
 		}
 	}
 
