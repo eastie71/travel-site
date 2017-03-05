@@ -11,6 +11,10 @@
 		max-width: 976px;
 	}
 
+	&--narrow {
+		max-width: 470px;
+	}
+
 	/* This is to deal with nested classes ie. wrapper within a wrapper */
 	.wrapper {
 		padding-left: 0;
