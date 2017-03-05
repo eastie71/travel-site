@@ -14,7 +14,15 @@
       <div class="site-header__logo">
         <div class="site-header__logo__graphic icon icon--clear-view-escapes">Clear View Escapes</div>
       </div>
-      <div class="site-header__menu-icon"></div>
+      <div class="site-header__menu-icon">
+        <!-- Rather than have an empty div for the top bar of the hamburger menu icon - use CSS ::before (ie. __menu-icon::before) to style this 
+        <div class="site-header__menu-icon__top"></div>
+        -->
+        <div class="site-header__menu-icon__middle"></div>
+        <!-- Rather than have an empty div for the bottom bar of the hamburger menu icon - use CSS ::after (ie. __menu-icon::after) to style this.
+        <div class="site-header__menu-icon__bottom"></div>
+        -->
+      </div>
       <div class="site-header__menu-content">
         <div class="site-header__btn_container">
           <a class="btn" href="#">Get in Touch</a>
