@@ -1385,4 +1385,20 @@ a {
   }
 }
 
+.reveal-item {
+	opacity: 0;
+	/* When transitioning the opacity and scale - have it happen over 1.5 seconds (fade it in) */
+	-webkit-transition: all 1.5s ease-out;
+	transition: all 1.5s ease-out;
+	/* Scale slightly larger to have a zoom out effect */
+	-webkit-transform: scale(1.15);
+	        transform: scale(1.15);
+}
+
+.reveal-item--is-visible {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 
