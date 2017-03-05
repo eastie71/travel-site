@@ -10,6 +10,11 @@
 	@mixin atMedium {
 		/* Medium+ screens will have a 30% transparent background color */
 		background-color: rgba($mainBlue, 0.3);
+		/* make the site header bar fixed - so it stays there all the time */
+		position: fixed;
+		&--dark {
+			background-color: rgba(23,51,72, 0.85);
+		}
 	}
 
 	&--is-expanded {
@@ -29,6 +34,8 @@
 		/* Centre the Logo for small screens. Scale 0.8 shrinks the log, and hence you need to transform origin vertical to be 0 to anchor to top */
 		left: 50%;
 		transform: translateX(-50%) scale(0.8);
+		/* When transforming the logo from smaller to larger screens it should do this over 0.3 seconds (fade in-out nicely) */
+		transition: transform 0.3s ease-out;
 		transform-origin: 50% 0;
 		
 		/* top 0 - makes sure logo is anchored to the top - as position is absolute */
@@ -39,6 +46,12 @@
 			/* For screens >= medium size, reset the centering applied for small screens above */
 			left: auto;
 			transform: translateX(0);
+
+			/* So when the --dark modifier has been applied to the site-header (ie. when we have scrolled down the page), 
+			   then we want to shrink the logo into the site header bar */
+			.site-header--dark & {
+				transform: scale(0.564);
+			}
 		}
 	}
 
