@@ -1,0 +1,18 @@
+body {
+	font-family: Roboto, sans-serif;
+	color: #333;
+}
+
+img {
+	max-width: 100%;
+	max-height: auto;
+}
+
+a {
+	color: $mainOrange;
+}
+
+/* this causes the padding to NOT be included in the width calculations of a div */
+* {
+	box-sizing: border-box;
+}
