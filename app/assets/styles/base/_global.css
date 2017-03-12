@@ -1,9 +1,11 @@
 body {
 	font-family: Roboto, sans-serif;
+	/* default font color - grey (not fully black) */
 	color: #333;
 }
 
 img {
+	/* this makes images always fit within the browser window - ie. so they dont scroll left to right when too large */
 	max-width: 100%;
 	max-height: auto;
 }

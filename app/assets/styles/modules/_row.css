@@ -1,5 +1,6 @@
 .row {
 
+	/* clear the floats after each row */
 	@mixin clearfix;
 
 	/* this is used to coounteract the padding-right for the last gutter - but also requires overflow:hidden in the wrapper class! */

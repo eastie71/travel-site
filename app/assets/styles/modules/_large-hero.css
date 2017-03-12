@@ -1,7 +1,15 @@
+/* So "large-hero" is the BLOCK within the BEM philosophy */
 .large-hero {
 	border-bottom: 10px solid $mainBlue;
 	position: relative;
 
+	/* Any CSS extending the MAIN (BLOCK) class (large-hero) via the "__" (2 underscores) syntax is considered to
+	   be BLOCK ELEMENTS within the BEM philosophy */
+
+	
+	/* By default browsers treat images as inline level elements - which means it treats it like text, so it wants
+	   to leave some room at the bottom for characters that hang below the line (ie. gjp).
+	   By saying "block" it treats it as a div or rectangle that can align perfectly */
 	&__image {
 		display: block;
 	}
@@ -9,12 +17,21 @@
 	/* here the ampersand(&) is a substitute for the main class name (.large-hero) */
 	&__text-content {
 		padding-top: 88px;
+		/* by saying position relative this allows text to appear on top of the image */
 		position: absolute;
-		top: 50%;
+
+		/* by doing this (top 50%), it means that the start (top) of the text is vertically aligned with the 
+		   overall div container element, but the content itself is not */
+		top: 50%; 
+		/* so by doing this (translateY 50%) - pull the content back up (vertically) about half(50%) its own height,
+		   this will vertically centre the content on top of the image */ 
 		transform: translateY(-50%);
+		/* NOTE: ALternately - instead of positioning the content (as above) you could made the image a CSS
+		         backgound image - however we are using responsive images and hence positioning is the chosen path here */
+
 		left: 0;
 
-		/* this will center the text */
+		/* this will center the text horizontally */
 		width: 100%;
 		text-align: center;
 
@@ -23,6 +40,11 @@
 		}
 	}
 
+	/* An explanation of REM(rem), when using "rem" everthing is relative to the ROOT of the web page (ie. the html)
+		So the browser will take to font size of the html element, and most web browsers will have a default font size
+		of about 16 pixels, therefore 1.5rem is equivalent to 24px on most browsers.
+		Someone with poor eysight may have configured their browser to have a default size of up to 30px and hence by using
+		"rem" this is a relative sizing and hence scale accordingly */
 	&__title {
 		font-weight: 300;
 		color: $mainBlue;
@@ -47,10 +69,15 @@
 	}
 
 	&__description {
+		/* white text #FFF */
 		color: #FFF;
+		
 		font-size: 1.1rem;
 		font-weight: 100;
 		text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+
+		/* max width hee used to have the description break on to 2 lines (at the right place according to the design file) 
+		   margin left and right auto keeps it centered */
 		max-width: 29.375rem;
 		margin-left: auto;
 		margin-right: auto;

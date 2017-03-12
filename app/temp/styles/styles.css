@@ -1,3 +1,8 @@
+/* the postcss plugin (css-import) allows you make use of the @import feature */
+
+/* normalize is an alternative to css resets, it adjust styles of certain elements in an effort to make
+   all web browsers render things more consistently. Recommended for all web projects */
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -464,10 +469,12 @@ template {
 
 body {
 	font-family: Roboto, sans-serif;
+	/* default font color - grey (not fully black) */
 	color: #333;
 }
 
 img {
+	/* this makes images always fit within the browser window - ie. so they dont scroll left to right when too large */
 	max-width: 100%;
 	max-height: auto;
 }
@@ -485,8 +492,10 @@ a {
 .btn {
 	background-color: #2f5572;
 	color: #FFF;
+	/* remove the underline - as it is a link */
 	text-decoration: none;
 	padding: 0.75rem 1.2rem;
+	/* this is so parent and surrounding elements are aware of its vertical padding */
 	display: inline-block;
 }
 
@@ -505,10 +514,16 @@ a {
   }
 }
 
+/* So "large-hero" is the BLOCK within the BEM philosophy */
+
 .large-hero {
 	border-bottom: 10px solid #2f5572;
 	position: relative;
 }
+
+/* By default browsers treat images as inline level elements - which means it treats it like text, so it wants
+	   to leave some room at the bottom for characters that hang below the line (ie. gjp).
+	   By saying "block" it treats it as a div or rectangle that can align perfectly */
 
 .large-hero__image {
   display: block;
@@ -517,12 +532,15 @@ a {
 /* here the ampersand(&) is a substitute for the main class name (.large-hero) */
 
 .large-hero__text-content {
-  padding-top: 88px;
-  position: absolute;
-  top: 50%;
+  padding-top: 88px;/* by saying position relative this allows text to appear on top of the image */
+  position: absolute;/* by doing this (top 50%), it means that the start (top) of the text is vertically aligned with the 
+		   overall div container element, but the content itself is not */
+  top: 50%;/* so by doing this (translateY 50%) - pull the content back up (vertically) about half(50%) its own height,
+		   this will vertically centre the content on top of the image */
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  left: 0;/* this will center the text */
+          transform: translateY(-50%);/* NOTE: ALternately - instead of positioning the content (as above) you could made the image a CSS
+		         backgound image - however we are using responsive images and hence positioning is the chosen path here */
+  left: 0;/* this will center the text horizontally */
   width: 100%;
   text-align: center;
 }
@@ -533,6 +551,12 @@ a {
     padding-top: 60px;
   }
 }
+
+/* An explanation of REM(rem), when using "rem" everthing is relative to the ROOT of the web page (ie. the html)
+		So the browser will take to font size of the html element, and most web browsers will have a default font size
+		of about 16 pixels, therefore 1.5rem is equivalent to 24px on most browsers.
+		Someone with poor eysight may have configured their browser to have a default size of up to 30px and hence by using
+		"rem" this is a relative sizing and hence scale accordingly */
 
 .large-hero__title {
   font-weight: 300;
@@ -548,6 +572,9 @@ a {
   }
 }
 
+/* Any CSS extending the MAIN (BLOCK) class (large-hero) via the "__" (2 underscores) syntax is considered to
+	   be BLOCK ELEMENTS within the BEM philosophy */
+
 .large-hero__subtitle {
   font-weight: 300;
   color: #2f5572;
@@ -562,11 +589,12 @@ a {
   }
 }
 
-.large-hero__description {
+.large-hero__description {/* white text #FFF */
   color: #FFF;
   font-size: 1.1rem;
   font-weight: 100;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);/* max width hee used to have the description break on to 2 lines (at the right place according to the design file) 
+		   margin left and right auto keeps it centered */
   max-width: 29.375rem;
   margin-left: auto;
   margin-right: auto;
@@ -579,15 +607,21 @@ a {
   }
 }
 
+/* this is separate class as the CSS required here is not specific to a particular block - it could be used throughout the page 
+   eg. you want to have left and right padding for text ALWAYS */
+
 .wrapper {
 	/* overflow hidden is required to handle the negative margin when trying to handle padding on row content - see column layout block lecture */
 	overflow: hidden;
+	/* could use rem instead of px here! */ 
 	padding-left: 18px;
 	padding-right: 18px;
 	max-width: 1236px;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* this modifier is used to centre the image - the image itself is 976px so, hence the image appears centered on the page */
 
 .wrapper--medium {
   max-width: 976px;
@@ -640,6 +674,8 @@ a {
     padding-right: 18px;
   }
 }
+
+/* This class has the responsibility for adding padding to the top and bottom of each section on the page */
 
 .page-section {
 	padding: 1.2rem 0;
@@ -699,6 +735,8 @@ a {
 	font-weight: 300;
 	font-size: 1.9rem;
 	color: #2f5572;
+
+	/* Use "em" for text element margins - which are relative to the text size itself */
 }
 
 @media (min-width: 530px) {
@@ -727,8 +765,8 @@ a {
   }
 }
 
-.headline--narrow {
-  max-width: 500px;
+.headline--narrow {/* set a max-width so that the text will drop down to a second line */
+  max-width: 500px;/* by setting the max-width you will still need to add left, right auto to keep it centered */
   margin-left: auto;
   margin-right: auto;
 }
@@ -758,6 +796,8 @@ a {
 .headline--no-t-margin {
   margin-top: 0;
 }
+
+/* clear the floats after each row */
 
 .row::after {
   content: "";

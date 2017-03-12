@@ -1,8 +1,10 @@
 .btn {
 	background-color: $mainBlue;
 	color: #FFF;
+	/* remove the underline - as it is a link */
 	text-decoration: none;
 	padding: 0.75rem 1.2rem;
+	/* this is so parent and surrounding elements are aware of its vertical padding */
 	display: inline-block;
 
 	&--orange {

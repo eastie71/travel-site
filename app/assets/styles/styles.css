@@ -1,3 +1,7 @@
+/* the postcss plugin (css-import) allows you make use of the @import feature */
+
+/* normalize is an alternative to css resets, it adjust styles of certain elements in an effort to make
+   all web browsers render things more consistently. Recommended for all web projects */
 @import "normalize.css";
 @import "base/_variables";
 @import "base/_mixins";
