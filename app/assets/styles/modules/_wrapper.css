@@ -33,6 +33,7 @@
 		}
 	}
 
+	/* no padding needed on mobile screen size to allow for more text content */
 	&--no-padding-until-medium {
 		padding-left: 0;
 		padding-right: 0;

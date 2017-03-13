@@ -10,11 +10,13 @@ img {
 	max-height: auto;
 }
 
+/* All links to to be main orange color by default */
 a {
 	color: $mainOrange;
 }
 
-/* this causes the padding to NOT be included in the width calculations of a div */
+/* this causes the padding to NOT be included in the width calculations of a div. 
+   It makes more sense to not include padding or border size in the calculation of width and height */
 * {
 	box-sizing: border-box;
 }

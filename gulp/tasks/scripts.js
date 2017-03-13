@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+/* Webpack allows you to require in js files, and create modules/classes */
 var webpack = require('webpack');
 
 gulp.task('scripts', ['modernizr'], function (callback) {

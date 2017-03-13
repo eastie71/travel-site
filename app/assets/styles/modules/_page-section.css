@@ -6,6 +6,7 @@
 		padding: 4.5rem 0;
 	}
 
+	/* the currently no used... */
 	&--no-b-padding-until-medium {
 		padding-bottom: 0;
 
@@ -14,6 +15,7 @@
 		}
 	}
 
+	/* need to remove the bottom padding for mobile screens */
 	&--no-b-padding-until-large {
 		padding-bottom: 0;
 
@@ -27,6 +29,7 @@
 		color: #FFF;
 	}
 
+	/* modifier class for testimonial section - add background color or image */
 	&--testimonials {
 		background-color: #e0e6ef;
 

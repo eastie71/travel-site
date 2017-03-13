@@ -1,3 +1,5 @@
+// babel allows you to make use of modern ES6 js such as classes, etc,
+// while supporting older browsers
 module.exports = {
 	entry: {
 		app: "./app/assets/scripts/app.js",

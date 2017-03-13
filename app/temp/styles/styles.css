@@ -479,11 +479,14 @@ img {
 	max-height: auto;
 }
 
+/* All links to to be main orange color by default */
+
 a {
 	color: #d59541;
 }
 
-/* this causes the padding to NOT be included in the width calculations of a div */
+/* this causes the padding to NOT be included in the width calculations of a div. 
+   It makes more sense to not include padding or border size in the calculation of width and height */
 
 * {
 	box-sizing: border-box;
@@ -649,6 +652,8 @@ a {
   }
 }
 
+/* no padding needed on mobile screen size to allow for more text content */
+
 .wrapper--no-padding-until-medium {
   padding-left: 0;
   padding-right: 0;
@@ -689,6 +694,8 @@ a {
   }
 }
 
+/* the currently no used... */
+
 .page-section--no-b-padding-until-medium {
   padding-bottom: 0;
 }
@@ -699,6 +706,8 @@ a {
     padding-bottom: 4.5rem;
   }
 }
+
+/* need to remove the bottom padding for mobile screens */
 
 .page-section--no-b-padding-until-large {
   padding-bottom: 0;
@@ -715,6 +724,8 @@ a {
   background-color: #2f5572;
   color: #FFF;
 }
+
+/* modifier class for testimonial section - add background color or image */
 
 .page-section--testimonials {
   background-color: #e0e6ef;
@@ -805,7 +816,9 @@ a {
   display: table;
 }
 
-/* this is used to coounteract the padding-right for the last gutter - but also requires overflow:hidden in the wrapper class! */
+/* As this is the main parent div of applying the horizontal padding to its children 
+	   we can apply negative margin to coounteract the padding-right for the last gutter 
+	   - but also requires overflow:hidden in the wrapper class! */
 
 .row--gutters {
   margin-right: -65px;
@@ -819,27 +832,43 @@ a {
   margin-right: -45px;
 }
 
+/* our beginning gutter */
+
 .row--gutters > div {
   padding-right: 65px;
 }
+
+/* feature items gutter */
 
 .row--gutters-large > div {
   padding-right: 100px;
 }
 
+/* testomonials gutter */
+
 .row--gutters-small > div {
   padding-right: 45px;
 }
 
+/* needed to add the top padding modifier because of the testimonial photo being pulled up 80px
+	   with position relative */
+
 .row--t-padding {
   padding-top: 80px;
 }
+
+/* apply horizontal padding to all divs within (ie. the columns) the row and --gutters modifier class */
 
 .row__b-margin-until-medium {
   margin-bottom: 1rem;
 }
 
 @media (min-width: 800px) {
+
+  .row {/* this is a modifier bc we want to be slightly bigger than
+		   4 columns (4/12) - to match the design file *//* this is a modifier bc we want to be slightly smaller than
+		   8 columns (8/12) - to match the design file */
+  }
 
   .row__b-margin-until-medium {
     margin-bottom: 0;
@@ -899,7 +928,7 @@ a {
   }
 }
 
-/* Begin Equal Height Rules */
+/* Equal height of testimonial boxes at medium size screens or greater */
 
 @media (min-width: 800px) {
 
@@ -910,12 +939,16 @@ a {
   }
 }
 
+/* select direct descendent divs (ie. columns) */
+
 .flexbox .row--equal-height-at-medium > div {
   float: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
+
+/* Begin Equal Height Rules */
 
 @media (min-width: 1010px) {
 
@@ -958,6 +991,8 @@ a {
 	text-align: center;
 }
 
+/* testimonials section title is blue */
+
 .section-title--blue {
   color: #2f5572;
 }
@@ -978,8 +1013,11 @@ a {
   font-weight: 500;
 }
 
-.section-title__icon {
-  display: block;
+/* icon is an element of the section-title block */
+
+.section-title__icon {/* by having display block - this drops will mean the text after it will appear on
+		   a new line */
+  display: block;/* as it a block level element - need to make sure it stays horizontally centered */
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.6rem;
@@ -987,17 +1025,18 @@ a {
 
 @media (min-width: 530px) {
 
-  .section-title__icon {
+  .section-title__icon {/* push the icon down 8px for larger screens */
     position: relative;
-    top: 8px;
+    top: 8px;/* setting to inline block this will stop the text from dropping down to a new line */
     display: inline-block;
-    margin-right: 1.8rem;
+    margin-right: 1.8rem;/* need to reset the left and bottom margin for larger screens */
     margin-left: 0;
     margin-bottom: 0;
   }
 }
 
 .feature-item {
+	/* parent element needs to be position relative for the icon to be position absolute */
 	position: relative;
 	padding-bottom: 2.5rem;
 }
@@ -1009,14 +1048,16 @@ a {
   }
 }
 
-.feature-item__icon {
+.feature-item__icon {/* by having display block - this drops will mean the text after it will appear on
+		   a new line - and center it horizontally */
   display: block;
   margin: 0 auto;
 }
 
 @media (min-width: 530px) {
 
-  .feature-item__icon {
+  .feature-item__icon {/* bc we want the icon to sit in the top left corner we need
+			   child element to be position to be absolute */
     position: absolute;
     left: 0;
   }
@@ -1040,6 +1081,7 @@ a {
 }
 
 .testimonial {
+	/* transparent white background color */
 	background-color: rgba(255,255,255, 0.8);
 	/* only need to add 1px of bottom margin (this containing element), which allow the paragraph to use its default margin INSIDE the container, and hence push it out */ 
 	padding: 0 18px 1px 18px;
@@ -1054,18 +1096,21 @@ a {
   }
 }
 
+/* for the last testimonial (3rd one) we dont want a bottom margin (on small screens) */
+
 .testimonial--last {
   margin-bottom: 0;
 }
 
-.testimonial__photo {
+.testimonial__photo {/* put the image in a circle */
   border-radius: 80px;
-  overflow: hidden;
+  overflow: hidden;/* photo image is exactly 160px wide and high */
   width: 160px;
-  height: 160px;
-  margin: 0 auto -80px auto;
+  height: 160px;/* center the photo and bring it up half its height */
   position: relative;
-  top: -80px;
+  top: -80px;/* need negative bottom margin so that the content knows we 
+		   moved the photo up */
+  margin: 0 auto -80px auto;
   border: 6px solid rgba(255,255,255, 0.8);
 }
 
