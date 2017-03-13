@@ -11320,8 +11320,12 @@ var StickyHeader = function () {
 				handler: function handler(scrollDirection) {
 					if (scrollDirection == "down") {
 						currentObject.siteHeader.addClass("site-header--dark");
+						//console.log("add dark to site-header");
 					} else {
 						currentObject.siteHeader.removeClass("site-header--dark");
+						// Remove the "current_link" highlight from the FIRST navigation link (a) - "Our Beginning"
+						//console.log(currentObject.siteHeaderLinks[0]);
+						currentObject.siteHeaderLinks.first().removeClass("is-current-link");
 					}
 				}
 			});
