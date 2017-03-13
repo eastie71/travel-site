@@ -1,4 +1,5 @@
 .feature-item {
+	/* parent element needs to be position relative for the icon to be position absolute */
 	position: relative;
 	padding-bottom: 2.5rem;
 
@@ -7,10 +8,14 @@
 	}
 
 	&__icon {
+		/* by having display block - this drops will mean the text after it will appear on
+		   a new line - and center it horizontally */
 		display: block;
 		margin: 0 auto;
 
 		@mixin atSmall {
+			/* bc we want the icon to sit in the top left corner we need
+			   child element to be position to be absolute */
 			position: absolute;
 			left: 0;
 		}
