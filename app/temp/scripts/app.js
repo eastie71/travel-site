@@ -11290,6 +11290,7 @@ var StickyHeader = function () {
 		this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
 		this.pageSections = (0, _jquery2.default)(".page-section");
 		this.siteHeaderLinks = (0, _jquery2.default)(".primary-nav a");
+		this.siteLogoLink = (0, _jquery2.default)(".site-header__logo a");
 		this.createHeaderWaypoint();
 		this.createPageSectionWaypoints();
 		this.addSmoothScrolling();
@@ -11299,7 +11300,7 @@ var StickyHeader = function () {
 	_createClass(StickyHeader, [{
 		key: 'refreshWaypoints',
 		value: function refreshWaypoints() {
-			// By calling the refreshAll method this will refresh all waypoints across the entire DOM scope
+			// By calling the refreshAll method this will refresh all waypoints across the entire DOM scope
 			// (this includes the waypoints used in RevealOnScroll)
 			this.lazyImages.on("load", function () {
 				Waypoint.refreshAll();
@@ -11310,6 +11311,7 @@ var StickyHeader = function () {
 		value: function addSmoothScrolling() {
 			// Add the smooth scrolling facility
 			this.siteHeaderLinks.smoothScroll();
+			this.siteLogoLink.smoothScroll();
 		}
 	}, {
 		key: 'createHeaderWaypoint',

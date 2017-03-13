@@ -10,6 +10,7 @@ class StickyHeader {
 		this.headerTriggerElement = $(".large-hero__title");
 		this.pageSections = $(".page-section");
 		this.siteHeaderLinks = $(".primary-nav a");
+		this.siteLogoLink = $(".site-header__logo a");
 		this.createHeaderWaypoint();
 		this.createPageSectionWaypoints();
 		this.addSmoothScrolling();
@@ -17,7 +18,7 @@ class StickyHeader {
 	}
 
 	refreshWaypoints() {
-		// By calling the refreshAll method this will refresh all waypoints across the entire DOM scope
+		// By calling the refreshAll method this will refresh all waypoints across the entire DOM scope
 		// (this includes the waypoints used in RevealOnScroll)
 		this.lazyImages.on("load", function () {
 			Waypoint.refreshAll();
@@ -27,6 +28,7 @@ class StickyHeader {
 	addSmoothScrolling() {
 		// Add the smooth scrolling facility
 		this.siteHeaderLinks.smoothScroll();
+		this.siteLogoLink.smoothScroll();
 	}
 
 	createHeaderWaypoint() {

@@ -1309,6 +1309,7 @@ a {
 }
 
 .site-header__logo__graphic {
+  display: block;
   text-indent: -9999px;
 }
 
