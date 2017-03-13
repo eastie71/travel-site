@@ -104,6 +104,8 @@
 	
 	/* Begin Equal Height Rules */
 	/* Equal height of testimonial boxes at medium size screens or greater */
+	/* the modernizr plugin adds the flexbox class if the browser supports it,
+	   otherwise it handles it as best it can */
 	.flexbox &--equal-height-at-medium {
 		@mixin atMedium {
 			display: flex;

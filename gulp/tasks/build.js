@@ -1,3 +1,4 @@
+// Gulp tasks to Build a distribution of the site
 var gulp = require("gulp");
 var imagemin = require('gulp-imagemin');
 var del = require('del');
