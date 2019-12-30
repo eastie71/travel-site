@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-// The postcss plugin does not do much out of the boc - you still need other plugins added to it as well
+// The postcss plugin does not do much out of the box - you still need other plugins added to it as well
 var postcss = require('gulp-postcss');
 
 // autoprofixer used to handle vendor prefixes for browsers - eg. webkit-.... 
