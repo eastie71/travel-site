@@ -1,29 +1,26 @@
-import $ from 'jquery';
-
 class MobileMenu {
 	constructor() {
-		this.siteHeader = $(".site-header");
-		this.menuIcon = $(".site-header__menu-icon");
-		this.menuContent = $(".site-header__menu-content");
+		this.siteHeader = document.querySelector(".site-header") 
+		this.menuIcon = document.querySelector(".site-header__menu-icon")
+		this.menuContent = document.querySelector(".site-header__menu-content")
 		// map the events for this object
-		this.events();
+		this.events()
 	}
 
 	events() {
 		// map the click event to the toggleTheMenu method
-		// Need to use the "bind" method to be able to access the "menuContent" element inside the
+		// Need to use the arrow function to be able to access the "menuContent" element inside the
 		// toggleTheMenu method
-		this.menuIcon.click(this.toggleTheMenu.bind(this));
+		this.menuIcon.addEventListener("click", () => this.toggleTheMenu())
 	}
 
 	// Toggle between visible and invisible for the menu content, expanded/contracted,
 	// and the close X menu-icon (on/off)
 	toggleTheMenu() {
-		this.menuContent.toggleClass("site-header__menu-content--is-visible");
-		this.siteHeader.toggleClass("site-header--is-expanded");
-		this.menuIcon.toggleClass("site-header__menu-icon--close-x");
+		this.menuContent.classList.toggle("site-header__menu-content--is-visible")
+		this.siteHeader.classList.toggle("site-header--is-expanded")
+		this.menuIcon.classList.toggle("site-header__menu-icon--close-x")
 	}
-
 }
 
 export default MobileMenu;
