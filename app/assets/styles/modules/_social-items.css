@@ -15,7 +15,7 @@
 			margin: 0 5px;
 		}
 
-		.icon {
+		img {
 			/* use display block so that the icon takes up space 
 				- automated width and height can be applied */
 			display: block;
