@@ -23,7 +23,9 @@ class StickyHeader {
 
 	this.pageSections.forEach(el => this.calcSection(el))
 
-    if (window.scrollY > 60) {
+	// If user has scrolled to Y position of 70 pixels then add the the "dark" class to the header section
+	// ie. make it darker...
+    if (window.scrollY > 70) {
       this.siteHeader.classList.add("site-header--dark")
     } else {
 	  this.siteHeader.classList.remove("site-header--dark")

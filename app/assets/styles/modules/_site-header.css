@@ -50,7 +50,7 @@
 			/* So when the --dark modifier has been applied to the site-header (ie. when we have scrolled down the page), 
 			   then we want to shrink the logo into the site header bar */
 			.site-header--dark & {
-				transform: scale(0.554);
+				transform: scale(0.55);
 			}
 		}
 	}
