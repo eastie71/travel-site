@@ -1,90 +1,57 @@
-import $ from 'jquery';
-// waypoints used for scroll events
-import waypoints from '../../../../node_modules/waypoints/lib/noframework.waypoints';
-import smoothScroll from 'jquery-smooth-scroll';
+import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 class StickyHeader {
-	constructor() {
-		this.lazyImages = $(".lazyload");
-		this.siteHeader = $(".site-header");
-		this.headerTriggerElement = $(".large-hero__title");
-		this.pageSections = $(".page-section");
-		this.siteHeaderLinks = $(".primary-nav a");
-		this.siteLogoLink = $(".site-header__logo a");
-		this.createHeaderWaypoint();
-		this.createPageSectionWaypoints();
-		this.addSmoothScrolling();
-		this.refreshWaypoints();
+  constructor() {
+    this.siteHeader = document.querySelector(".site-header")
+	this.pageSections = document.querySelectorAll(".page-section")
+	this.siteHeaderLinks = document.querySelectorAll(".primary-nav a")
+    this.browserHeight = window.innerHeight
+    this.previousScrollY = window.scrollY
+    this.events()
+  }
+
+  events() {
+    window.addEventListener("scroll", throttle(() => this.runOnScroll(), 200))
+    window.addEventListener("resize", debounce(() => {
+      this.browserHeight = window.innerHeight
+    }, 333))
+  }
+
+  runOnScroll() {
+    this.determineScrollDirection()
+
+	this.pageSections.forEach(el => this.calcSection(el))
+
+    if (window.scrollY > 60) {
+      this.siteHeader.classList.add("site-header--dark")
+    } else {
+	  this.siteHeader.classList.remove("site-header--dark")
+	  // Remove the "current_link" highlight from ALL the site header links if at the TOP
+	  this.siteHeaderLinks.forEach(el => el.classList.remove("is-current-link"))
 	}
+   
+  }
 
-	refreshWaypoints() {
-		// By calling the refreshAll method this will refresh all waypoints across the entire DOM scope
-		// (this includes the waypoints used in RevealOnScroll)
-		this.lazyImages.on("load", function () {
-			Waypoint.refreshAll();
-		});
-	}
+  determineScrollDirection() {
+    if (window.scrollY > this.previousScrollY) {
+      this.scrollDirection = 'down'
+    } else {
+      this.scrollDirection = 'up'
+    }
+    this.previousScrollY = window.scrollY
+  }
 
-	addSmoothScrolling() {
-		// Add the smooth scrolling facility
-		this.siteHeaderLinks.smoothScroll();
-		this.siteLogoLink.smoothScroll();
-	}
-
-	createHeaderWaypoint() {
-		var currentObject = this;
-		new Waypoint({
-			element: this.headerTriggerElement[0],
-			handler: function (scrollDirection) {
-				if (scrollDirection == "down") {
-					currentObject.siteHeader.addClass("site-header--dark");
-					//console.log("add dark to site-header");
-				} else {
-					currentObject.siteHeader.removeClass("site-header--dark");
-					// Remove the "current_link" highlight from the FIRST navigation link (a) - "Our Beginning"
-					//console.log(currentObject.siteHeaderLinks[0]);
-					currentObject.siteHeaderLinks.first().removeClass("is-current-link");
-				}
-			}
-		});
-	}
-
-	createPageSectionWaypoints() {
-		var currentObject = this;
-		this.pageSections.each(function () {
-			var currentPageSection = this;
-
-			// Scrolling DOWN the page
-			new Waypoint({
-				element: currentPageSection,
-				handler: function (scrollDirection) {
-					if (scrollDirection == "down") {
-						var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
-						// Remove any is-current-link classes from ALL page nav links
-						currentObject.siteHeaderLinks.removeClass("is-current-link");
-						// Apply the is-current-link class to matching waypoint link :)
-						$(matchingHeaderLink).addClass("is-current-link");
-					}
-				},
-				offset: "18%"
-			});
-
-			// Scrolling UP the page
-			new Waypoint({
-				element: currentPageSection,
-				handler: function (scrollDirection) {
-					if (scrollDirection == "up") {
-						var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
-						// Remove any is-current-link classes from ALL page nav links
-						currentObject.siteHeaderLinks.removeClass("is-current-link");
-						// Apply the is-current-link class to matching waypoint link :)
-						$(matchingHeaderLink).addClass("is-current-link");
-					}
-				},
-				offset: "-40%"
-			});
-		});
-	}
+  calcSection(el) {
+    if (window.scrollY + this.browserHeight > el.offsetTop && window.scrollY < el.offsetTop + el.offsetHeight) {
+      let scrollPercent = el.getBoundingClientRect().top / this.browserHeight * 100
+      if (scrollPercent < 18 && scrollPercent > -0.1 && this.scrollDirection == 'down' || scrollPercent < 33 && this.scrollDirection == 'up') {
+        let matchingLink = el.getAttribute("data-matching-link")
+        document.querySelectorAll(`.primary-nav a:not(${matchingLink})`).forEach(el => el.classList.remove("is-current-link"))
+        document.querySelector(matchingLink).classList.add("is-current-link")
+      }
+    }
+  }
 }
 
-export default StickyHeader;
+export default StickyHeader
