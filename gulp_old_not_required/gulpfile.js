@@ -1,9 +1,9 @@
-require('./gulp/tasks/styles');
-require('./gulp/tasks/watch');
-require('./gulp/tasks/sprites');
-require('./gulp/tasks/scripts');
-require('./gulp/tasks/modernizr');
-require('./gulp/tasks/build');
+require('./tasks/styles');
+require('./tasks/watch');
+require('./tasks/sprites');
+require('./tasks/scripts');
+require('./tasks/modernizr');
+require('./tasks/build');
 
 /**
 dummy tasks for learning...
