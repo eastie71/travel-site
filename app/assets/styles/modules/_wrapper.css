@@ -16,6 +16,10 @@
 		max-width: 976px;
 	}
 
+	&--small {
+		max-width: 650px;
+	}
+
 	&--narrow {
 		max-width: 470px;
 	}
