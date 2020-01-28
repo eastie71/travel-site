@@ -45,7 +45,19 @@ let config = {
 	plugins: htmlPages,
 	module: {
 		rules: [
-			cssConfig
+			cssConfig,
+			// Need babel-loader for bot DEV and BUILD because need react for dev env.
+			{
+				test: /\.js$/,
+				exclude: /(node_modules)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						// Added preset-react for react handling example code - see App.js
+						presets: ['@babel/preset-react','@babel/preset-env']
+					}
+				}
+			}
 		]
 	}
 }
@@ -69,16 +81,6 @@ if (currentTask == 'dev') {
 	}
 	config.mode = 'development'
 } else if (currentTask == 'build') {
-	config.module.rules.push({
-		test: /\.js$/,
-		exclude: /(node_modules)/,
-		use: {
-			loader: 'babel-loader',
-			options: {
-				presets: ['@babel/preset-env']
-			}
-		}
-	})
 	// Add the CSS Extractor for pulling out the CSS from the JS files for build (deployment)
 	cssConfig.use.unshift(MiniCssExtractPlugin.loader)
 

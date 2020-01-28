@@ -5,6 +5,15 @@ import RevealOnScroll from './modules/RevealOnScroll'
 import StickyHeader from './modules/StickyHeader'
 import ClientArea from './modules/ClientArea'
 
+// React Code Here
+import React from 'react'
+import ReactDom from 'react-dom'
+
+// Import React components
+import CompenentExample1 from './modules/ComponentExample1'
+
+ReactDom.render(<CompenentExample1/>, document.querySelector("#react-example"))
+
 new ClientArea()
 new MobileMenu()
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 75)
