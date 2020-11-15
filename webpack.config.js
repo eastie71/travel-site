@@ -26,7 +26,7 @@ class RunAfterBuild {
 let cssConfig = {
 	test: /\.css$/i,
 	/* css-loader has added option '?url=false' so that it disables handling of images in CSS (eg. background images) */
-	use: ['css-loader?url=false', {loader: 'postcss-loader', options: {plugins: postCSSPlugins} }]
+	use: ['css-loader?url=false', {loader: 'postcss-loader', options: {postcssOptions: {plugins: postCSSPlugins}} }]
 }
 
 let htmlPages = fse.readdirSync('./app').filter(function(file) {
