@@ -1,38 +1,31 @@
 /* So "large-hero" is the BLOCK within the BEM philosophy */
 .large-hero {
 	border-bottom: 10px solid $mainBlue;
-	position: relative;
+	/* CSS Grids for overlapping the text-content on the hero image */
+	display: grid;
+	grid-template-columns: 1fr;
 
 	/* Any CSS extending the MAIN (BLOCK) class (large-hero) via the "__" (2 underscores) syntax is considered to
 	   be BLOCK ELEMENTS within the BEM philosophy */
-
 	
 	/* By default browsers treat images as inline level elements - which means it treats it like text, so it wants
 	   to leave some room at the bottom for characters that hang below the line (ie. gjp).
 	   By saying "block" it treats it as a div or rectangle that can align perfectly */
 	&__image {
-		display: block;
+		grid-column: 1;
+		grid-row: 1;
+		img {
+			display: block;
+		}
 	}
 
 	/* here the ampersand(&) is a substitute for the main class name (.large-hero) */
 	&__text-content {
+		align-self: center; /* Needed to get vertical alignment when overlapping the image */
+		grid-column: 1;
+		grid-row: 1;
+		
 		padding-top: 88px;
-		/* by saying position relative this allows text to appear on top of the image */
-		position: absolute;
-
-		/* by doing this (top 50%), it means that the start (top) of the text is vertically aligned with the 
-		   overall div container element, but the content itself is not */
-		top: 50%; 
-		/* so by doing this (translateY 50%) - pull the content back up (vertically) about half(50%) its own height,
-		   this will vertically centre the content on top of the image */ 
-		transform: translateY(-50%);
-		/* NOTE: ALternately - instead of positioning the content (as above) you could made the image a CSS
-		         backgound image - however we are using responsive images and hence positioning is the chosen path here */
-
-		left: 0;
-
-		/* this will center the text horizontally */
-		width: 100%;
 		text-align: center;
 
 		@mixin atMedium {
