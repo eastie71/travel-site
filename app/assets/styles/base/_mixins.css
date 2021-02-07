@@ -15,12 +15,3 @@
 		@mixin-content;
 	}
 }
-
-/* clearfix - better way to clear the floats after using them for a row */
-@define-mixin clearfix {
-	&::after {
-		content: "";
-		clear: both;
-		display: table;
-	}
-}

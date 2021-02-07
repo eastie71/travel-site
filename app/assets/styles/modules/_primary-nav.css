@@ -5,16 +5,9 @@
 		padding-top: 0;
 	}
 
-	&--pull-right {
-		@mixin atMedium {
-			float: right;
-		}
-	}
-
 	ul {
 		margin: 0;
 		padding: 0;
-		@mixin clearfix;
 	}
 
 	li {
@@ -22,9 +15,7 @@
 		display: inline-block;
 		padding-right: 7px;
 		@mixin atMedium {
-			display: block;
 			padding-right: 20px;
-			float: left;
 		}
 	}
 
