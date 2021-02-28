@@ -9,7 +9,7 @@
 
 	@mixin atMedium {
 		/* Medium+ screens will have a 30% transparent background color */
-		background-color: rgba($mainBlue, 0.3);
+		background-color: rgba(47, 85, 114, 0.3);
 		/* make the site header bar fixed - so it stays there all the time */
 		position: fixed;
 		&--dark {
@@ -19,7 +19,7 @@
 
 	&--is-expanded {
 		/* Expanded menu on small screens will have a 55% transparent background color */
-		background-color: rgba($mainBlue, 0.55);
+		background-color: rgba(47, 85, 114, 0.55);
 	}
 
 	&__btn_container {
